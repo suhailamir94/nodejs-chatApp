@@ -26,9 +26,13 @@ socket.on('join',(params,callback)=>{
 if(!isRealString(params.name) || !isRealString(params.room))
    return callback('Name and room name are required!!');
 
+else if(users.getUserByName(params.name))
+return callback('User already present! Please login with a new name!')
 
+    params.room = params.room.toLowerCase();
     socket.join(params.room);
     users.removeUser(socket.id);
+    
     users.addUser(socket.id,params.name, params.room);
     
     io.to(params.room).emit('updateUsersList',users.getUsersList(params.room));

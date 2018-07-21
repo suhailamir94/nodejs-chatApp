@@ -27,6 +27,9 @@ class Users {
         var namesArray = users.map((user) => user.name);
         return namesArray;
     }
+    getUserByName(name){
+        return this.users.filter((user) => user.name === name)[0];
+    }
 
 }
 module.exports = {

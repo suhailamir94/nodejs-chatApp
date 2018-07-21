@@ -19,7 +19,6 @@ if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeig
 }
 //fired when server is connected
 socket.on('connect',function(){
-
 var params = jQuery.deparam(window.location.search);
 socket.emit('join',params,function(err){
 
